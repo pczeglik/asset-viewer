@@ -1,6 +1,6 @@
 const ASSET_CATEGORIES = ['Cat', 'Dog', 'Lion', 'Elephant', 'Monkey']
 const API_URL = 'https://api.giphy.com/v1/gifs/random'
-const API_KEY = 'tBPlSLUDMBmcULupPe8wT7Omw1nryKiG'
+const API_KEY = ''
 
 const ACTION_TYPES = {
     FETCH_ASSET: 'FETCH_ASSET',

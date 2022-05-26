@@ -3,14 +3,16 @@ import React, { useContext } from 'react'
 import { ASSET_CATEGORIES } from '../common/constants'
 import { AssetStateDataContext } from '../contexts/AssetStateContext'
 import { UIFactory } from '../factories/UIFactory'
-import AppController from '../AppController'
+
+import { publish } from '../common/pubsub'
+import { ChangeCategoryEvent } from '../common/events'
 
 export function ButtonsUI() {
     const { dispatch } = useContext(AssetStateDataContext);
 
     function onClick(category) {
         return () => {
-            dispatch(AppController.getAsset(category))
+            publish(new ChangeCategoryEvent(category, dispatch))
         }
     }
 
