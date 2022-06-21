@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import { compareState, states } from '../common/stateMachine'
 import { AssetStateDataContext } from '../contexts/AssetStateContext'
 import AppController from '../AppController'
@@ -7,11 +7,13 @@ import { LOGO_SRC } from '../common/constants'
 export function AssetViewer() {
     const { assetState, dispatch } = useContext(AssetStateDataContext)
 
+    const dispatchRandomAsset = useCallback(() => {
+        dispatch(AppController.getRandomAsset())
+    }, [dispatch])
+
     useEffect(() => {
-        (function() {
-            dispatch(AppController.getRandomAsset())
-        }())
-    }, [])
+        dispatchRandomAsset()
+    }, [dispatchRandomAsset])
 
     return (
         <>
