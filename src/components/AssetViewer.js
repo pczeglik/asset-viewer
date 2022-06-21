@@ -2,7 +2,6 @@ import { useCallback, useContext, useEffect } from 'react'
 import { compareState, states } from '../common/stateMachine'
 import { AssetStateDataContext } from '../contexts/AssetStateContext'
 import AppController from '../AppController'
-import { LOGO_SRC } from '../common/constants'
 
 export function AssetViewer() {
     const { assetState, dispatch } = useContext(AssetStateDataContext)
@@ -40,7 +39,7 @@ function AssetEmpty() {
 function AssetLoading() {
     return (
         <div className="asset-viewer asset-viewer-loading">
-            <img src={LOGO_SRC} alt='viewer asset' />
+            LOADING...
         </div>
     )
 }
