@@ -1,6 +1,7 @@
 import { useCallback, useContext, useEffect } from 'react'
 import { compareState, states } from '../common/stateMachine'
 import { AssetStateDataContext } from '../contexts/AssetStateContext'
+import { UIFactory } from '../factories/UIFactory'
 import AppController from '../AppController'
 
 export function AssetViewer() {
@@ -48,7 +49,7 @@ function AssetError({ error }) {
 function AssetLoaded({ src }) {
     return (
         <div className="asset-viewer asset-viewer-loaded">
-            <img src={src} alt='viewer asset' />
+            {UIFactory.createImg({ src: src, altText: 'asset viewer' })}
         </div>
     )
 }

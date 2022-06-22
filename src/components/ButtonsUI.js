@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import { ASSET_CATEGORIES } from '../common/constants'
 import { AssetStateDataContext } from '../contexts/AssetStateContext'
-import { ButtonFactory } from '../factories/ButtonFactory'
+import { UIFactory } from '../factories/UIFactory'
 import AppController from '../AppController'
 
 export function ButtonsUI() {
@@ -17,7 +17,7 @@ export function ButtonsUI() {
     return (
         <div className="buttons-ui">
             {ASSET_CATEGORIES.map(category => {
-                return ButtonFactory.createButton({ category, onClick: onClick(category) })
+                return UIFactory.createButton({ category, onClick: onClick(category) })
             })}
         </div>
     )
