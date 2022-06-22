@@ -1,19 +1,23 @@
 import { useCallback, useContext, useEffect } from 'react'
-import { compareState, states } from '../common/stateMachine'
 import { AssetStateDataContext } from '../contexts/AssetStateContext'
+import { compareState, states } from '../common/stateMachine'
+import { ASSET_CATEGORIES } from '../common/constants'
+import { getRandomElement } from '../common/utils'
+import { ChangeCategoryEvent } from '../common/events'
+import { publish } from '../common/pubsub'
 import { UIFactory } from '../factories/UIFactory'
-import AppController from '../AppController'
 
 export function AssetViewer() {
     const { assetState, dispatch } = useContext(AssetStateDataContext)
 
-    const dispatchRandomAsset = useCallback(() => {
-        dispatch(AppController.getRandomAsset())
+    const getRandomAsset = useCallback(() => {
+        const randomCategory = getRandomElement(ASSET_CATEGORIES)
+        publish(new ChangeCategoryEvent(randomCategory, dispatch))
     }, [dispatch])
 
     useEffect(() => {
-        dispatchRandomAsset()
-    }, [dispatchRandomAsset])
+        getRandomAsset()
+    }, [getRandomAsset])
 
     return (
         <div data-testid="asset-viewer">
