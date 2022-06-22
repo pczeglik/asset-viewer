@@ -4,7 +4,7 @@ import App from './App';
 test('renders App', () => {
   render(<App />);
 
-  const viewerElement = screen.getByAltText(/viewer asset/i);
+  const viewerElement = screen.getByTestId('asset-viewer');
   expect(viewerElement).toBeInTheDocument();
 
   const buttonElement = screen.getByText(/Cat/i);

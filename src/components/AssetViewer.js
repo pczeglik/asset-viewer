@@ -15,12 +15,12 @@ export function AssetViewer() {
     }, [dispatchRandomAsset])
 
     return (
-        <>
+        <div data-testid="asset-viewer">
             {compareState(assetState.state, states.idle) && <AssetEmpty />}
             {compareState(assetState.state, states.isLoading) && <AssetLoading />}
             {compareState(assetState.state, states.hasError) && <AssetError error={assetState.error} />}
             {compareState(assetState.state, states.hasLoaded) && <AssetLoaded src={assetState.url} />}
-        </>
+        </div>
     )
 }
 
